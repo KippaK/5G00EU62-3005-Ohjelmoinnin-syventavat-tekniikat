@@ -76,6 +76,6 @@ public class date_only {
 	@Override
 	public String toString()
 	{
-		return String.format("%04d-%02d-%02d", year, month, day);
+		return String.format("%04d-%02d-%02d", this.year, this.month, this.day);
 	}
 }
