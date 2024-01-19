@@ -5,9 +5,9 @@ public class date_only {
 
 	public date_only(int year, int month, int day)
 	{
-		this.year = year;
-		this.month = month;
-		this.day = day;
+		set_year(year);
+		set_month(month);
+		set_day(day);
 	}
 
 	private boolean is_leap_year()
