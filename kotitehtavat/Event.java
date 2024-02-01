@@ -12,8 +12,8 @@ public class Event implements Comparable<Event> {
         String category)
     {
         this.time = time;
-        this.setDescription(description);
-        this.setCategory(category);
+        this.description = new Description(description);
+        this.category = new Category(category);
     }    
 
     public void setTime(LocalDate time) {
@@ -43,5 +43,13 @@ public class Event implements Comparable<Event> {
     @Override
     public int compareTo(Event event) {
         return this.time.compareTo(event.getTime());
+    }
+
+    @Override
+    public String toString() {
+        return (
+            "When: " + time.toString() +
+            "\nDesc: " + description.toString() + 
+            "\nWhat: " + category.toString() + '\n');
     }
 }
