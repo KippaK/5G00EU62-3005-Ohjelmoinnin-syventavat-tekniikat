@@ -5,6 +5,7 @@ public class guess_random {
 	static int guess() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter a guess (1 - 100): ");
+		scan.close();
 		return scan.nextInt();
 	}
 

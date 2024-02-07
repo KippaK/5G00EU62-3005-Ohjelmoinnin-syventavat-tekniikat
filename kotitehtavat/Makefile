@@ -1,14 +1,15 @@
 JAVAFX_PATH=~/libs/javafx-sdk-21.0.2/lib/
 JAVAFX_MODULES=javafx.controls
-CLASS_NAME=SimpleJavaFXApp
+CLASS_NAME=FXListView
 
+DISABLE_HW_ACC=-Dprism.order=sw
 
 JAVAFX=--module-path $(JAVAFX_PATH) --add-modules $(JAVAFX_MODULES)
 
 JAVA_FILE=$(CLASS_NAME).java
 
 COMPILE=javac $(JAVAFX) $(JAVA_FILE)
-EXECUTE=java $(JAVAFX) $(CLASS_NAME)
+EXECUTE=java $(DISABLE_HW_ACC) $(JAVAFX) $(CLASS_NAME)
 
 all:
 	$(COMPILE)
