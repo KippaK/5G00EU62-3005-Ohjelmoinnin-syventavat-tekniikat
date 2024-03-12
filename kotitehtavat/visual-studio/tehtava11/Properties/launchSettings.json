@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "tehtava11": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "EVENTS_PATH": "\\\\wsl.localhost\\Ubuntu-22.04\\home\\antti\\tamk\\ohsyte\\kotitehtavat\\visual-studio\\tehtava11\\events.csv"
+      }
+    }
+  }
+}

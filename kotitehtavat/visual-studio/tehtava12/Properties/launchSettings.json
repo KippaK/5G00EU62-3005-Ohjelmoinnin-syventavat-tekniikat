@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "tehtava12": {
+      "commandName": "Project",
+      "commandLineArgs": "2010-01-01 2024-02-29"
+    }
+  }
+}
