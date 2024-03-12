@@ -1,48 +1,85 @@
-public class Event : IComparable
+public class Description
 {
-    private string description;
-    private EventCategory category;
+    private string _value;
 
-    public string Description
+    public string Value
     {
-        get => description;
+        get => this._value;
+
         set
         {
-            ArgumentNullException.ThrowIfNullOrEmpty(value);
+            if (string.IsNullOrEmpty(value)) { 
+                throw new ArgumentNullException("Description cannot be null or empty");
+            }
 
             if (value.Length > 500)
             {
                 throw new ArgumentException("Description is too long");
             }
 
-            description = value;
+            this._value = value;
         }
     }
 
-    public EventCategory Category
+    public Description(string description)
     {
-        get => category;
-        set
-        {
-            ArgumentNullException.ThrowIfNull(value);
-
-            category = value;
-        }
-    }
-
-    public DateOnly Date { get; set; }
-
-    public Event(DateOnly date, string description, EventCategory category)
-    {
-        Date = date;
-        Description = description;
-        Category = category;
+        this.Value = description;
     }
 
     public override string ToString()
     {
-        return $"{Date} {Description} ({Category})";
+        return this.Value;
     }
+}
+
+public class Category
+{
+    public string Primary { get; set; }
+    public string Secondary { get; set; }
+
+    public Category(string primary)
+    {
+        this.Primary = primary;
+        this.Secondary = string.Empty;
+    }
+
+    public Category(string primary, string secondary)
+    {
+        this.Primary = primary;
+        this.Secondary = secondary;
+    }
+
+    public override string ToString()
+    {
+        string result = this.Primary;
+        if (!string.IsNullOrEmpty(this.Secondary))
+        {
+            result += "/" + this.Secondary;
+        }
+        return result;
+    }
+}
+
+public class Event: IComparable {
+    public Description Description { get; set; }
+    public Category Category { get; set; }
+    public DateOnly Date { get; set; }
+
+    public Event(DateOnly date, Description description, Category category)
+    {
+        this.Date = date;
+        this.Description = description;
+        this.Category = category;
+    }
+
+    public override string ToString()
+    {
+        return $"{this.Date} {this.Description} ({this.Category})";
+    }
+
+    //
+    // IComparable implementation
+    //
 
     public int CompareTo(object obj)
     {
@@ -54,7 +91,7 @@ public class Event : IComparable
         Event otherEvent = obj as Event;
         if (otherEvent != null)
         {
-            return Date.CompareTo(otherEvent.Date);
+            return this.Date.CompareTo(otherEvent.Date);
         }
         else
         {
